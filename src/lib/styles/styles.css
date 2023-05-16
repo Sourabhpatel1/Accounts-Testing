@@ -1,0 +1,162 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+*, *::after, *::before {
+  box-sizing: border-box;
+}
+* {
+  font: inherit;
+  margin: 0;
+  padding: 0;
+}
+html {
+  color-scheme: light;
+}
+:root {
+  --bg-color : #eeeeee;
+  --white : #ffffff;
+  --light-gray: #cccccc;
+  --gray : #808080;
+  --dark-gray: #333333;
+  --primary : #094067;
+  --secondary : #ffd59e;
+  --highlight : #3da9fc;
+  --accent: #fd6d06;
+  --subtle : #d6dee6;
+  --wheat : #f1c57d;
+  --ok: #43a82f;
+  --positive : rgb(176, 241, 176);
+  --warning : #ff5470;
+  --danger: #dc143c;
+  --headline: #094067;
+  --text : #192330;
+  --button-background : #3da9fc;
+  --button-text : #fffffe;
+  --text-sm: 10px;
+  --text-md: 14px;
+  --text-lg: 16px;
+  --bss: 0px 0px 10px 0 rgba(0 0 0 /0.5);
+  --bsm : 0 0 7px 0 rgba(0 0 0 / 0.3);
+  --bsl : 0 0 5px 0 rgba(0 0 0 / 0.1);
+  --radius : 0.30rem;
+}
+body {
+  min-height: 100vh;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.5;
+  display: flex;
+  font-family: 'Poppins';
+  background: var(--bg-color);
+  color: var(--text);
+}
+img, picture, svg, video {
+  display: block;
+  max-width: 100%;
+}
+h1,h2,h3,h4,h5,h6 {
+  font-weight: 700;
+}
+h1 {
+  font-size: 2.4rem;
+}
+h2 {
+  font-size: 2.1rem;
+}
+h3 {
+  font-size: 1.8rem;
+}
+h4 {
+  font-size: 1.5rem;
+}
+h5 {
+  font-size: 1.2rem;
+}
+h5 {
+  font-size: 1rem;
+}
+input {
+  width: 100%;
+  padding: 0.3rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  border-radius: 5px;
+  cursor: text;
+  border: 2px solid var(--secondary);
+  color: var(--text);
+  border: 0;
+  outline: 0;
+  box-shadow: var(--bsm);
+  border-radius: var(--radius);
+  height: 35px;
+}
+input:focus {
+  border-radius: 5px;
+  outline: 2px solid var(--highlight);
+}
+textarea {
+  padding: .3rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+textarea:focus {
+  outline: 2px solid var(--highlight);
+}
+button {
+  border: 0;
+  outline: 0;
+  padding: 0.5rem 1rem;
+  box-shadow: var(--bsl);
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+button:hover {
+  background: var(--light-gray);
+}
+button:active {
+  transform: scale(0.95);
+}
+button:disabled:active {
+  transform: none;
+}
+button:disabled {
+  color: var(--primary) !important;
+  background: var(--light-gray) !important;
+  cursor: default;
+}
+/* Svelte Select */
+.select {
+  --background : var(--accent-1) !important;
+  --border : solid 0px var(--highlight) !important;
+  --border-focused : solid 2px var(--highlight) !important;
+  --border-hover : solid 0px var(--highlight) !important;
+  --border-radius : var(--radius);
+  --box-sizing : border-box;
+  --item-hover-bg : var(--accent);
+  --item-is-active-bg : var(--ok);
+  --list-background : var(--secondary);
+  --list-z-index : 999;
+  --width : 100%;
+  --clear-icon-color : var(--danger);
+  --font-weight : 500;
+  --font-size: 0.875rem;
+  --height: 35px;
+}
+.svelte-select {
+  box-shadow: var(--bsm) !important;
+}
+.svelte-select input:hover{
+  cursor: text !important;
+}
+.title {
+  stroke: var(--primary);
+  fill: var(--primary);
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+}
+@media print {
+  body * {
+      font-size: 13px !important;
+      visibility: hidden;
+  }
+}

@@ -1,0 +1,194 @@
+<script>
+    import ApexCharts from 'apexcharts'
+    import { onMount } from 'svelte';
+	import DashBadge from './../lib/components/DashBadge.svelte';
+    
+    export let data;
+
+    let cashInChart;
+    let cashOut;
+    let bankIn;
+    let bankOut;
+    
+    let chartHeight = 300;
+    let chartType = 'area'
+    let stroke = {
+        curve : 'smooth'
+    }
+    onMount(async ()=>{
+        let optionsOne = {
+            chart: {
+                height: chartHeight,
+                width: "100%",
+                type: chartType,
+                zoom: {
+                    enabled: true,
+                    type: 'x',  
+                    autoScaleYaxis: false,  
+                    zoomedArea: {
+                        fill: {
+                            color: '#90CAF9',
+                            opacity: 0.4
+                        },
+                        stroke: {
+                            color: '#0D47A1',
+                            opacity: 0.4,
+                            width: 1
+                        }
+                    }
+                },
+                animations: {
+                    initialAnimation: {
+                        enabled: false
+                    }
+                }
+            },
+            series: [
+                {
+                    name : "Cash In Flow",
+                    data : data.cash.cIn
+                }, 
+                {
+                    name : "Cash Out Flows",
+                    data : data.cash.cOut
+                }
+            ],
+            xaxis: {
+                type: "datetime"
+            },
+            stroke : stroke,
+            colors : ['#2CD5A0', '#d00037'],
+            fill : {
+            colors : ['#2CD5A0', '#d00037'],
+            }
+        };
+        let optionBankIn = {
+            chart: {
+            height: chartHeight,
+            width: "100%",
+            type: chartType,
+            zoom: {
+                    enabled: true,
+                    type: 'x',  
+                    autoScaleYaxis: true,  
+                    zoomedArea: {
+                        fill: {
+                            color: '#90CAF9',
+                            opacity: 0.4
+                        },
+                    stroke: {
+                        color: '#0D47A1',
+                        opacity: 0.4,
+                        width: 1
+                    }
+                }
+            },
+            animations: {
+                initialAnimation: {
+                        enabled: false
+                    }
+                }
+            },
+            series: [
+                {
+                    name : "Bank Inflow",
+                    data : data.cash.bIn
+                },
+                {
+                    name : "Bank Out Flows",
+                    data : data.cash.bOut
+                }
+            ],
+            xaxis: {
+                type: "datetime"
+            },
+            stroke :stroke,
+            colors : ['#2CD5A0', '#d00037'],
+            fill : {
+               colors : ['#2CD5A0', '#d00037']
+            }
+        }
+        let chartCashIn = new ApexCharts(cashInChart, optionsOne)
+        let chartBankIn = new ApexCharts(bankIn, optionBankIn)
+        
+        chartCashIn.render()
+        chartBankIn.render()
+    })
+</script>
+
+<section class="flex flex-col">
+    <div class="header">
+        <h4>Welcome</h4>
+    </div>
+    <div class="ratios flex flex-col">
+        <div class="items flex-cc">
+            {#each Object.keys(data.ratio) as key}
+                {#each Object.keys(data.ratio[key]) as cat}
+                    <DashBadge name={cat} value={data.ratio[key][cat] * 100} />
+                {/each}
+            {/each}
+        </div>
+    </div>
+    <div class="liquidity">
+        <div class="chart">
+            <div class="head">
+                <h5>Cash flows</h5>
+            </div>
+            <div class="cash-in" bind:this={cashInChart}>
+            </div>
+        </div>
+        <div class="chart">
+            <div class="head">
+                <h5>Bank flows</h5>
+            </div>
+            <div class="bank-in" bind:this={bankIn}>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    section {
+        width: 100%;
+        padding: 1rem 0;
+        gap: 0rem;
+    }
+    section .header {
+        padding: .3rem 1rem;
+    }
+    section .header h4 {
+        width: 100%;
+        text-align: center;
+
+    }
+    .ratios {
+        width: 100%;
+        padding: 1rem;
+        gap: 1rem;
+    }
+    .items {
+        width: 100%;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+    .liquidity {
+        width: 98%;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1px;
+    }
+    .liquidity .chart {
+        width: 100%;
+        padding: 1rem;
+        text-align: center;
+    }
+    .liquidity .chart .head {
+        border-bottom: 3px solid;
+        border-radius: var(--radius);
+    }
+    .cash-in,
+    .bank-in {
+        min-width: 100%;
+    }
+</style>

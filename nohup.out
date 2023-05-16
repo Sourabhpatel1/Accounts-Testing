@@ -1,0 +1,27 @@
+
+> frontend@0.0.1 dev
+> vite dev
+
+
+
+  VITE v4.1.4  ready in 536 ms
+
+  ➜  Local:   http://localhost:5173/
+  ➜  Network: use --host to expose
+7:22:32 pm [vite-plugin-svelte] ssr compile in progress ...
+7:22:32 pm [vite-plugin-svelte] ssr compile done.
+package 	files	 time	   avg
+frontend	    4	0.11s	27.4ms
+
+> frontend@0.0.1 dev
+> vite dev
+
+
+
+  VITE v4.1.4  ready in 548 ms
+
+  ➜  Local:   http://localhost:5173/
+  ➜  Network: use --host to expose
+7:23:00 pm [vite-plugin-svelte] ssr compile done.
+package 	files	 time	   avg
+frontend	    4	0.11s	28.2ms
