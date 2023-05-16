@@ -1,4 +1,4 @@
-const baseUrl = 'http://127.0.0.1:8000'
+const baseUrl = 'https://fastapi-production-460a.up.railway.app'
 
 export const apiUrls = {
     business : baseUrl + '/business/',
