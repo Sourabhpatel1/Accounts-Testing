@@ -5,7 +5,8 @@ export const post = async (url, body) => {
             method : "POST",
             body : JSON.stringify(body),
             headers : {
-                'Content-Type' : 'application/json'
+                'Content-Type' : 'application/json',
+                'Access-Control-Allow-Origins' : 'https://svelte-kit-production-2c2e.up.railway.app',
             }
         })
         if (res.ok) {
